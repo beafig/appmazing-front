@@ -1,2 +1,10 @@
-<!-- indica dónde se debe renderizar el componente asociado a una determinada ruta -->
+<!-- El código de este archivo se muestra en todos los componentes -->
+
+<mat-toolbar>
+  <a mat-button routerLink="/">Home</a>
+  <a mat-button routerLink="/contacts">Contactos</a>
+  <a mat-button routerLink="/products">Productos</a>
+</mat-toolbar>
+
+<!-- etiqueta necesaria para que funcionen los links a los otros componentes definidos en app-routing -->
 <router-outlet></router-outlet>

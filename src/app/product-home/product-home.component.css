@@ -17,3 +17,7 @@ th {
 .tr-row:active {
   background-color: #9cd7e0;
 }
+
+.inactive {
+  background-color: rgb(202, 201, 201);
+}

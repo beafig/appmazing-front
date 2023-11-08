@@ -1,14 +1,14 @@
-<!-- mat-table: para indicar que la table viene de la librería material, el módulo table
-  dataSource: array de objetos definidos en el archico ts del componente, entre [] se pone
+<!-- mat-table: para indicar que la table viene de la librería material, del módulo table
+  [dataSource]: indicamos de donde va a recibir lo datos, que es el array contacts que definimos en el .ts
 class: clase propia de la librería material, que da estilos a la tabla -->
 <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
-  <!-- ng-container:
-  matColumnDef: 
+  <!-- ng-container: etiqueta propia del módulo table
+  matColumnDef: indicamos que elemento se va a mostrar, que es uno de los elementos de la BD
   mat-header-cell: plantilla del header de la tabla de la librería
   *matHeaderCellDef: 
   mat-cell: plantilla de celda de la librería
-  *matCellDef= "let contact" -> definimos el nombre para acceder a los datos del array
-  {{element.position}}: datos del array ELEMENT_DATA, .position para acceder al valor de la propiedad position. para mostrar cualquier valor del ts debes ponerlo entre doble {{}}
+  *matCellDef= "let contact" -> definimos el nombre para acceder a los datos del array contacts
+  {{contact.id}}: datos del array contacts, .id para acceder al valor del id. para mostrar cualquier valor del ts debes ponerlo entre doble {{}}
  -->
   <!-- ID Column -->
   <ng-container matColumnDef="id">
@@ -17,22 +17,22 @@ class: clase propia de la librería material, que da estilos a la tabla -->
   </ng-container>
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
     <td mat-cell *matCellDef="let contact">{{ contact.name }}</td>
   </ng-container>
   <!-- first_surname Column -->
   <ng-container matColumnDef="first_surname">
-    <th mat-header-cell *matHeaderCellDef>First surname</th>
+    <th mat-header-cell *matHeaderCellDef>Primer apellido</th>
     <td mat-cell *matCellDef="let contact">{{ contact.first_surname }}</td>
   </ng-container>
   <!-- second_surname Column -->
   <ng-container matColumnDef="second_surname">
-    <th mat-header-cell *matHeaderCellDef>Second surname</th>
+    <th mat-header-cell *matHeaderCellDef>Segundo apellido</th>
     <td mat-cell *matCellDef="let contact">{{ contact.second_surname }}</td>
   </ng-container>
   <!-- phone Column -->
   <ng-container matColumnDef="phone_number">
-    <th mat-header-cell *matHeaderCellDef>Phone</th>
+    <th mat-header-cell *matHeaderCellDef>Teléfono</th>
     <td mat-cell *matCellDef="let contact">{{ contact.phone_number }}</td>
   </ng-container>
   <!-- email Column -->
@@ -40,8 +40,13 @@ class: clase propia de la librería material, que da estilos a la tabla -->
     <th mat-header-cell *matHeaderCellDef>Email</th>
     <td mat-cell *matCellDef="let contact">{{ contact.email }}</td>
   </ng-container>
-  <!-- *matHeaderRowDef:  
-    displayedColumns: en el export del .ts se define el nº de columnas asignándole un nombreS -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <!-- *matHeaderRowDef:  es la fila del encabezado, indicamos que las columnas serán las definidas en el archivo .ts en displayedColumns -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tr-header"></tr>
+  <!-- mat-row: define las filas de la tabla -->
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="openDetailForm(row)"
+    class="tr-row"
+  ></tr>
 </table>

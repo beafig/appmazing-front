@@ -1,0 +1,54 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  margin: 20px 0;
+  padding: 20px 40px 20px 40px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  box-shadow: 10px 5px 5px rgb(113, 113, 113);
+  border: 1px solid rgb(113, 113, 113);
+}
+
+mat-card-title {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  color: #4bb3c2;
+}
+.card-content p {
+  display: flex;
+  align-items: center;
+}
+.card-content p mat-icon,
+.card-content p strong {
+  margin-right: 5px;
+}
+
+.card-content p mat-icon {
+  color: #4bb3c2;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #4bb3c2;
+  border: 1px solid #32747f;
+  box-shadow: 3px 2px 5px rgb(113, 113, 113);
+  padding: 5px;
+  margin-right: 15px;
+}
+
+button:hover {
+  transform: scale(115%);
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+}

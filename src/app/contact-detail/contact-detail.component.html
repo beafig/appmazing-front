@@ -1,0 +1,33 @@
+<!-- usamos el módulo Card e Icon de la librería Material 
+
+*nfIf-> es un conficional If propio de angular, que si contact es false, es decir si no tiene datos no los carga, y cuando es true, que ya tiene los datos, los muestra-->
+<div class="card-container">
+  <mat-card class="card" *ngIf="contact">
+    <mat-card-title>Detalle del contacto</mat-card-title>
+    <mat-card-content class="card-content">
+      <p>
+        <mat-icon>contacts</mat-icon>
+        <strong>Nombre:</strong> {{ contact.name }}
+      </p>
+      <p>
+        <mat-icon>contacts</mat-icon>
+        <strong>Primer apellido:</strong> {{ contact.first_surname }}
+      </p>
+      <p>
+        <mat-icon>contacts</mat-icon>
+        <strong>Segundo apellido:</strong> {{ contact.second_surname }}
+      </p>
+      <p>
+        <mat-icon>contact_phone</mat-icon>
+        <strong>Número de teléfono</strong> {{ contact.phone_number }}
+      </p>
+      <p>
+        <mat-icon>contact_mail</mat-icon>
+        <strong>Email:</strong> {{ contact.email }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="container-btn">
+  <button><a href="/contacts">Volver a lista de contactos</a></button>
+</div>
