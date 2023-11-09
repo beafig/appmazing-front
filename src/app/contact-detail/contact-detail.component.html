@@ -19,15 +19,19 @@
       </p>
       <p>
         <mat-icon>contact_phone</mat-icon>
-        <strong>Número de teléfono</strong> {{ contact.phone_number }}
+        <strong>Número de teléfono:</strong> {{ contact.phone_number }}
       </p>
       <p>
         <mat-icon>contact_mail</mat-icon>
         <strong>Email:</strong> {{ contact.email }}
       </p>
     </mat-card-content>
+    <button
+      mat-mini-fab
+      aria-label="Button with a return icon"
+      title="Botón de volver atrás"
+    >
+      <a href="/contacts"><mat-icon>replay</mat-icon> </a>
+    </button>
   </mat-card>
-</div>
-<div class="container-btn">
-  <button><a href="/contacts">Volver a lista de contactos</a></button>
 </div>

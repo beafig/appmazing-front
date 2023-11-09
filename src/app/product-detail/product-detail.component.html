@@ -1,35 +1,43 @@
-<mat-card class="card" *ngIf="product">
-  <mat-card-title>Detalle del producto</mat-card-title>
-  <mat-card-content class="card-content">
-    <p>
-      <mat-icon> shopping_cart</mat-icon>
-      <strong>Producto:</strong> {{ product.name }}
-    </p>
-    <p>
-      <mat-icon>list_alt</mat-icon>
-      <strong>Stock:</strong> {{ product.stock }} uds.
-    </p>
-    <p>
-      <!-- <mat-icon>euro_symbol</mat-icon> -->
-      <mat-icon>credit_card</mat-icon>
-      <strong>Precio:</strong> {{ product.price }} €
-    </p>
-    <p>
-      <mat-icon>thumbs_up_down</mat-icon>
-      <strong>Disponibilidad:</strong>
-      {{ product.active ? "Disponible" : "No disponible" }}
-    </p>
+<div class="card-container">
+  <mat-card class="card" *ngIf="product">
+    <mat-card-title>Detalle del producto</mat-card-title>
+    <mat-card-content class="card-content">
+      <p>
+        <mat-icon> shopping_cart</mat-icon>
+        <strong>Producto:</strong> {{ product.name }}
+      </p>
+      <p>
+        <mat-icon>list_alt</mat-icon>
+        <strong>Stock:</strong> {{ product.stock }} uds.
+      </p>
+      <p>
+        <!-- <mat-icon>euro_symbol</mat-icon> -->
+        <mat-icon>credit_card</mat-icon>
+        <strong>Precio:</strong> {{ product.price }} €
+      </p>
+      <p>
+        <mat-icon>thumbs_up_down</mat-icon>
+        <strong>Disponibilidad:</strong>
+        {{ product.active ? "Disponible" : "No disponible" }}
+      </p>
 
-    <p>
-      <mat-icon>calendar_today</mat-icon>
-      <strong>Fecha de adición:</strong>
-      {{ product.date_added | date : "dd/MM/yyyy" }}
-    </p>
-    <p>
-      <mat-icon>calendar_today</mat-icon>
-      <strong>Categoría:</strong>
-      {{ product.fk_category.name }}
-    </p>
-  </mat-card-content>
-</mat-card>
-<button><a href="/contacts">Volver a lista de productos</a></button>
+      <p>
+        <mat-icon>calendar_today</mat-icon>
+        <strong>Fecha de adición:</strong>
+        {{ product.date_added | date : "dd/MM/yyyy" }}
+      </p>
+      <p>
+        <mat-icon>calendar_today</mat-icon>
+        <strong>Categoría:</strong>
+        {{ product.fk_category.name }}
+      </p>
+    </mat-card-content>
+    <button
+      mat-mini-fab
+      aria-label="Button with a return icon"
+      title="Botón de volver atrás"
+    >
+      <a href="/products"><mat-icon>replay</mat-icon> </a>
+    </button>
+  </mat-card>
+</div>

@@ -1,8 +1,6 @@
 table {
   margin: 20px 0px 0px 40px;
   width: calc(100% - 80px);
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .tr-header {
@@ -17,7 +15,21 @@ th {
 .tr-row:active {
   background-color: #9cd7e0;
 }
-
+.tr-row {
+  cursor: pointer;
+}
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  background-color: #9cd7e0;
+  color: white;
+  width: 45px;
+  text-align: center;
+  padding: 0;
+}
+.second-cell {
+  padding-left: 10px;
+}
 .inactive {
   background-color: rgb(202, 201, 201);
 }
