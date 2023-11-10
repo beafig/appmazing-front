@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-detail',
@@ -14,12 +14,14 @@ export class ContactDetailComponent implements OnInit {
   contact: any;
 
   // route: ActivedRoute para recoger el parámetro id de la url
-  constructor(private contactsService: ContactsService, private route : ActivatedRoute) { }
+  constructor(private contactsService: ContactsService, private route : ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.contactsService.getContact(this.route.snapshot.params['id']).subscribe(data =>{
       this.contact = data;
     })
   }
-
+  navigateToHome(){
+    this.router.navigate(['/contacts'])
+  }
 }

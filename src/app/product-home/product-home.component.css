@@ -36,3 +36,15 @@ th.mat-header-cell:first-of-type {
 .inactive {
   background-color: rgb(202, 201, 201);
 }
+
+#new-product {
+  margin: 20px 0 0 40px;
+  background-color: var(--main-color);
+  color: white;
+  box-shadow: 3px 2px 5px rgb(113, 113, 113);
+  font-family: var(--main-font);
+}
+
+#new-product:hover {
+  transform: scale(110%);
+}

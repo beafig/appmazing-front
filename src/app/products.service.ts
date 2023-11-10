@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from 'model/Product';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,5 +21,12 @@ export class ProductsService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({id: product_id})
     return this.http.post<any>(url, body, {headers})
+  }
+
+  newProduct(product: Product): void{
+    const url = 'http://localhost:30030/products/add'
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = product;
+    this.http.post(url, body, {headers}).subscribe();
   }
 }
