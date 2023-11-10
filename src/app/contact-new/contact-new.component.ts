@@ -13,13 +13,14 @@ first_surname: string;
 second_surname:string;
 phone_number: number;
 email:string;
+
   constructor(private router: Router, private contactsService: ContactsService) { }
 
   ngOnInit() {
   }
 
   // handler del botón de submit, creamos el contacto recogiendo todos los valores del form, y llamamos al método para volver a la tabla
-  newContact(){
+  async newContact(){
     const contact= {
       name: this.name,
       first_surname: this.first_surname,
@@ -27,8 +28,8 @@ email:string;
       phone_number: this.phone_number,
       email: this.email
     }
-    this.contactsService.newContact(contact)
-    this.navigateToHome();
+     this.contactsService.newContact(contact)
+     await this.navigateToHome();
   }
 // handler del botón cancelar
   cancelInsert(){

@@ -17,7 +17,8 @@ category: Category = new Category();
 // array de tipo Category donde voy a guardar los datos de la BD con el método getCategories()
 categories: Category[] = []
 
-  constructor(private router: Router, private productsService: ProductsService, private categoriesService: CategoriesService) { }
+
+  constructor(private router: Router, private productsService: ProductsService, private categoriesService: CategoriesService) {  }
 
   ngOnInit(): void{
     this.categoriesService.getCategories().subscribe(data =>{
@@ -25,22 +26,25 @@ categories: Category[] = []
     })
   }
 
-  newProduct(){
-    if (this.product.stock > 0){
-      this.product.active = true;
-    } else {
-      this.product.active = false;
+  async newProduct(){
+      if (this.product.stock > 0){
+        this.product.active = true;
+      } else {
+        this.product.active = false;
+      }
+      if(this.product.date_added == null){
+        this.product.date_added = new Date()
+      }
+      const product={
+      name: this.product.name, 
+      stock: this.product.stock,
+      price: this.product.price,
+      active: this.product.active,
+      date_added : this.product.date_added,
+      fk_category: this.category
     }
-    const product={
-    name: this.product.name, 
-    stock: this.product.stock,
-    price: this.product.price,
-    active: this.product.active,
-    date_added : this.product.date_added,
-    fk_category: this.category
-  }
-  this.productsService.newProduct(product);
-  this.navigateToHome();
+    this.productsService.newProduct(product);
+    await this.navigateToHome();
 }
 
 cancelInsert(){

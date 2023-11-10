@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductNewComponent } from './product-new/product-new.component';
 
 @NgModule({
@@ -44,7 +44,8 @@ import { ProductNewComponent } from './product-new/product-new.component';
     // módulos para el formulario
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
