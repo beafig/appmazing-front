@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Router } from '@angular/router';
 
@@ -28,6 +28,18 @@ export class ContactHomeComponent implements OnInit{
   this.router.navigate(['/contact', row.id]);
   }
 
+  // método para ordenar por nombre de forma ascendente, uso el SpreadOperator [...array], y ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo
+sortByNameAsc(){
+  this.contacts = [...this.contacts]
+  this.contacts.sort((a, b)=>{
+    return a.name.localeCompare(b.name)})  
+}
+
+sortByNameDesc(){
+  this.contacts = [...this.contacts]
+  this.contacts.sort((a, b)=>{
+    return b.name.localeCompare(a.name)}) 
+}
   // aquí definimos todas las columnas que va a tener nuestra table, que son los mismos elementos (con el mismo nombre) que tenemos definidos en la base de datos
   displayedColumns: string[] = ['id', 'name', 'first_surname', 'second_surname', 'phone_number', 'email'];
 }

@@ -1,5 +1,8 @@
 <div class="card-container">
-  <mat-card class="card" *ngIf="product">
+  <mat-card
+    *ngIf="product"
+    [ngClass]="product.active ? 'card' : 'card inactive'"
+  >
     <mat-card-title>Detalle del producto</mat-card-title>
     <mat-card-content class="card-content">
       <p>

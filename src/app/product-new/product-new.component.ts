@@ -26,15 +26,23 @@ categories: Category[] = []
     })
   }
 
+  verifyStock(){
+    if (this.product.stock > 0){
+      this.product.active = true;
+    } else {
+      this.product.active = false;
+    }
+  }
+
+  verifyDate(){
+    if(this.product.date_added == null){
+      this.product.date_added = new Date()
+    }
+  }
+
   async newProduct(){
-      if (this.product.stock > 0){
-        this.product.active = true;
-      } else {
-        this.product.active = false;
-      }
-      if(this.product.date_added == null){
-        this.product.date_added = new Date()
-      }
+    this.verifyStock();
+    this.verifyDate()
       const product={
       name: this.product.name, 
       stock: this.product.stock,
@@ -44,7 +52,12 @@ categories: Category[] = []
       fk_category: this.category
     }
     this.productsService.newProduct(product);
-    await this.navigateToHome();
+    console.log(product)
+    if(product.name === undefined || product.stock === undefined || product.price=== undefined){
+      alert('Todos los campos son obligarios excepto la fecha')
+    } else {
+      await this.navigateToHome();
+    }
 }
 
 cancelInsert(){

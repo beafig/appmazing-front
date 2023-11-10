@@ -38,6 +38,7 @@ export class ContactsService {
     const url= 'http://localhost:30030/contacts/add';
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body= contact;
-    this.http.post(url, body, {headers}).subscribe();
+    this.http.post(url, body, {headers}).subscribe(
+    );
   }
 }

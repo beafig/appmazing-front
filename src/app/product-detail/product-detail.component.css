@@ -43,3 +43,7 @@ button a {
   text-decoration: none;
   color: white;
 }
+
+.inactive {
+  background-color: rgb(228, 227, 227);
+}

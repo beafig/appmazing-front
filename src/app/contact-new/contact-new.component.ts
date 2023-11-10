@@ -28,8 +28,12 @@ email:string;
       phone_number: this.phone_number,
       email: this.email
     }
-     this.contactsService.newContact(contact)
-     await this.navigateToHome();
+      this.contactsService.newContact(contact);
+      if(contact.name === undefined || contact.first_surname === undefined || contact.phone_number === undefined || contact.email){
+        alert('Todos los campos son obligarios excepto el segundo apellido')
+      } else {
+        await this.navigateToHome();
+      }
   }
 // handler del botón cancelar
   cancelInsert(){
