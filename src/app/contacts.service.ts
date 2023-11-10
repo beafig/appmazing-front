@@ -30,4 +30,14 @@ export class ContactsService {
     const body= JSON.stringify({id: contact_id})
     return this.http.post<any>(url, body, {headers})
   }
+
+  // método para añadir un nuevo contacto, le pasamos un contacto (creado en el form). es void porque no devuelve nada
+  // el body no hay que transforlo a JSON porque lo haces directamente al cubrir el form cuando creas el objetos contact con name: this.name
+  // el subscribe se hace aquí en vez de en el ts porque el método no devuelva nada, por lo que no recibiremos nada como data
+  newContact(contact: any): void{
+    const url= 'http://localhost:30030/contacts/add';
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body= contact;
+    this.http.post(url, body, {headers}).subscribe();
+  }
 }

@@ -3,9 +3,11 @@
 html,
 body {
   height: 100%;
+  --main-color: #4bb3c2;
+  --second-color: #9cd7e0;
+  --main-font: "Roboto", sans-serif;
+  --second-font: "Lobster", sans-serif;
 }
 body {
   margin: 0;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

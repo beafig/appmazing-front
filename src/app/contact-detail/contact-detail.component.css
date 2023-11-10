@@ -7,12 +7,14 @@
   padding: 20px 40px 20px 40px;
   box-shadow: 10px 5px 5px rgb(113, 113, 113);
   border: 1px solid rgb(113, 113, 113);
+  font-family: var(--second-font);
+  letter-spacing: 1px;
 }
 
 mat-card-title {
   margin-bottom: 20px;
   text-decoration: underline;
-  color: #4bb3c2;
+  color: var(--main-color);
 }
 .card-content p {
   display: flex;
@@ -24,11 +26,11 @@ mat-card-title {
 }
 
 .card-content p mat-icon {
-  color: #4bb3c2;
+  color: var(--main-color);
 }
 
 .mat-mini-fab {
-  background-color: #4bb3c2;
+  background-color: var(--main-color);
   box-shadow: 3px 2px 5px rgb(113, 113, 113);
   position: relative;
   left: 85%;

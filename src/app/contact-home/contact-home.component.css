@@ -1,10 +1,12 @@
 table {
   margin: 20px 0px 0px 40px;
   width: calc(100% - 80px);
+  font-family: var(--second-font);
+  letter-spacing: 1.5px;
 }
 
 .tr-header {
-  background-color: #9cd7e0;
+  background-color: var(--second-color);
 }
 
 th {
@@ -15,14 +17,15 @@ th {
 .tr-row {
   cursor: pointer;
 }
-.tr-row:active {
-  background-color: #9cd7e0;
+
+.tr-row:hover {
+  background-color: var(--second-color);
 }
 
 td.mat-cell:first-of-type,
 td.mat-footer-cell:first-of-type,
 th.mat-header-cell:first-of-type {
-  background-color: #9cd7e0;
+  background-color: var(--second-color);
   color: white;
   width: 45px;
   text-align: center;
@@ -30,4 +33,16 @@ th.mat-header-cell:first-of-type {
 }
 .second-cell {
   padding-left: 10px;
+}
+
+#new-contact {
+  margin: 20px 0 0 40px;
+  background-color: var(--main-color);
+  color: white;
+  box-shadow: 3px 2px 5px rgb(113, 113, 113);
+  font-family: var(--main-font);
+}
+
+#new-contact:hover {
+  transform: scale(110%);
 }

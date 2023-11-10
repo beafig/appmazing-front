@@ -1,27 +1,30 @@
 table {
   margin: 20px 0px 0px 40px;
   width: calc(100% - 80px);
+  font-family: var(--second-font);
+  letter-spacing: 1.5px;
 }
 
 .tr-header {
-  background-color: #9cd7e0;
+  background-color: var(--second-color);
 }
 
 th {
   font-size: 15px;
   color: white;
 }
-
-.tr-row:active {
-  background-color: #9cd7e0;
-}
 .tr-row {
   cursor: pointer;
 }
+
+.tr-row:hover {
+  background-color: var(--second-color);
+}
+
 td.mat-cell:first-of-type,
 td.mat-footer-cell:first-of-type,
 th.mat-header-cell:first-of-type {
-  background-color: #9cd7e0;
+  background-color: var(--second-color);
   color: white;
   width: 45px;
   text-align: center;

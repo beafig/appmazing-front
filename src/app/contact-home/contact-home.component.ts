@@ -16,7 +16,8 @@ export class ContactHomeComponent implements OnInit{
 
   // método inicial al entrar en esta URL, viene de contacts.service, el método es getContacts y recibe data, que son todos los datos de nuestra base de datos
   ngOnInit(): void {
-    this.contactsService.getContacts().subscribe(data => {
+    this.contactsService.getContacts()
+    .subscribe(data => {
       // en el array contacts guardamos data
       this.contacts = data;
     })
