@@ -29,6 +29,22 @@
     <button
       mat-mini-fab
       aria-label="Button with a return icon"
+      title="Botón de ver anterior"
+      (click)="goToPrevious()"
+    >
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Button with a return icon"
+      title="Botón de ver siguiente"
+      (click)="goToNext()"
+    >
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Button with a return icon"
       title="Botón de volver atrás"
       (click)="navigateToHome()"
     >

@@ -7,10 +7,12 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
 import { ProductNewComponent } from './product-new/product-new.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 
 
 // definimos las rutas del proyecto y a que componenente nos lleva
 const routes: Routes = [
+{path:'', component: MainHomeComponent},
 {path:'contacts' , component: ContactHomeComponent },
 {path: 'contact/new', component: ContactNewComponent},
 {path:'contact/:id', component: ContactDetailComponent},

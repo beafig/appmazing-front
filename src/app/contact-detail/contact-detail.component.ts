@@ -1,27 +1,80 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactsService } from '../contacts.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ContactsService } from "../contacts.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-contact-detail',
-  templateUrl: './contact-detail.component.html',
-  styleUrls: ['./contact-detail.component.css']
+  selector: "app-contact-detail",
+  templateUrl: "./contact-detail.component.html",
+  styleUrls: ["./contact-detail.component.css"],
 })
-
 export class ContactDetailComponent implements OnInit {
-
-// aquí se guarda el contacto obtenido del servicio
+  // aquí se guarda el contacto obtenido del servicio
   contact: any;
 
+  // array para guardar todos los contactos de la BD
+  contacts: any = [];
+  ids = [];
   // route: ActivedRoute para recoger el parámetro id de la url
-  constructor(private contactsService: ContactsService, private route : ActivatedRoute, private router: Router) { }
+  constructor(
+    private contactsService: ContactsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.contactsService.getContact(this.route.snapshot.params['id']).subscribe(data =>{
-      this.contact = data;
-    })
+    // la primera línea hace que mi componente esté suscrito a los cambios de ruta, por ello cuando se ejecuta de la función goToPrevious(), se recarga la página directamente y me lleva a la url del contacto seleccionado
+    this.route.params.subscribe((params) => {
+      this.contactsService
+        .getContact(this.route.snapshot.params["id"])
+        .subscribe((data) => {
+          this.contact = data;
+        });
+    });
   }
-  navigateToHome(){
-    this.router.navigate(['/contacts'])
+  navigateToHome() {
+    this.router.navigate(["/contacts"]);
+  }
+
+  // método para obtener los datos de los contactos de la BD, y crear un nuevo array solo con los ids, es una promesa ya que quiero que primero obtenga los datos y luego cree el array, si no creará un array ids vacío hasta que se obtengan los datos
+  async createIdsArray(): Promise<number[]> {
+    return new Promise((resolve) => {
+      this.contactsService.getContacts().subscribe((data) => {
+        this.contacts = data;
+        this.ids = this.contacts.map((e) => e.id);
+        resolve(this.ids);
+      });
+    });
+  }
+
+  // método para ver el detalle del contacto anterior, primero obtengo el array de ids del método anterior
+  // obtengo el id de la ruta anterior convirtiéndolo a number
+  // obtengo el index de ese id con el método findIndex, tengo que trabajar con los index porque los ids no son consecutivos
+  // condicional para comprobar si el índice es 0, en cuyo caso me llevará al último elemento del array, que es la longitud del array -1
+  async goToPrevious() {
+    this.ids = await this.createIdsArray();
+    let currentId = parseInt(this.route.snapshot.params["id"]);
+    let currentIndex = this.ids.findIndex((id) => {
+      return id === currentId;
+    });
+    if (currentIndex === 0) {
+      currentIndex = this.ids.length - 1;
+      this.router.navigate(["/contact/", this.ids[currentIndex]]);
+    } else {
+      this.router.navigate(["/contact/", this.ids[currentIndex - 1]]);
+    }
+  }
+
+  //condicional para comprobar si estoy en el último elemento del array, que es la longitud del array -1, en cuyo caso me lleva al primer elemento con índice [0]
+  async goToNext() {
+    this.ids = await this.createIdsArray();
+    let currentId = parseInt(this.route.snapshot.params["id"]);
+    let currentIndex = this.ids.findIndex((id) => {
+      return id === currentId;
+    });
+    if (currentIndex === this.ids.length - 1) {
+      this.router.navigate(["/contact/", this.ids[0]]);
+    } else {
+      this.router.navigate(["/contact/", this.ids[currentIndex + 1]]);
+    }
   }
 }

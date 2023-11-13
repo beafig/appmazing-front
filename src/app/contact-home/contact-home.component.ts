@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ export class ContactHomeComponent implements OnInit{
   // contacts es un array de cualquier tipo (any), que es donde ser guardarán los datos que recibimos de la BD
   contacts: any = [];
 
-  // al constructor le por parámetros el servicio donde está definido el método y el router, que es un elemento necesario para que funcione el link de cada elemento
+  // al constructor le pasamos por parámetros el servicio donde está definido el método y el router, que es un elemento necesario para que funcione el link de cada elemento
   constructor(private contactsService: ContactsService, private router: Router){}
 
   // método inicial al entrar en esta URL, viene de contacts.service, el método es getContacts y recibe data, que son todos los datos de nuestra base de datos
@@ -23,12 +23,12 @@ export class ContactHomeComponent implements OnInit{
     })
   }
 
-  // método para acceder al detalle de cada contacto, para ello creamos el método, que es un evento click al que llamamos en el elemento <tr> que define las filas de nuestra tabla, recibe por parámetros la fila sobre la que hemos creado e indicamos que nos lleve a la nueva url que será: /contact/id de la fila
+  // método para acceder al detalle de cada contacto, para ello creamos el método, que es un evento click al que llamamos en el elemento <tr> que define las filas de nuestra tabla, recibe por parámetros la fila sobre la que hemos clicado e indicamos que nos lleve a la nueva url que será: /contact/id de la fila
   openDetailForm(row: any){
   this.router.navigate(['/contact', row.id]);
   }
 
-  // método para ordenar por nombre de forma ascendente, uso el SpreadOperator [...array], ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo el componente
+  // método para ordenar por nombre de forma ascendente, uso el Spread Operator [...array], ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo el componente
 sortByNameAsc(){
   this.contacts = [...this.contacts]
   this.contacts.sort((a, b)=>{

@@ -8,6 +8,7 @@ import { ContactsService } from '../contacts.service';
   styleUrls: ['./contact-new.component.css']
 })
 export class ContactNewComponent implements OnInit {
+  // los campos que tendrá el objeto Contact que enviaremos al servidor.
 name:string;
 first_surname: string;
 second_surname:string;
@@ -28,17 +29,14 @@ email:string;
       phone_number: this.phone_number,
       email: this.email
     }
-      if(contact.name === undefined || contact.first_surname === undefined || contact.phone_number === undefined || contact.email === undefined){
-        alert('Todos los campos son obligarios excepto el segundo apellido')
-        console.log(contact.name);
-        console.log(contact.first_surname);
-        console.log(contact.phone_number);
-        console.log(contact.email);
-        
+    // condicional para controlar que los campos oblicagorios estén cubiertos, si escribo y borro no funciona ya que pasa de undefined a '' string vacío.
+      if(contact.name === undefined || contact.first_surname === undefined  || contact.phone_number === undefined || contact.email === undefined){
+        alert('Todos los campos son obligarios excepto el segundo apellido, revise y cubra los campos que faltan')
       } else {
         this.contactsService.newContact(contact);
         await this.navigateToHome();
       }
+
   }
 // handler del botón cancelar
   cancelInsert(){
