@@ -28,12 +28,17 @@ mat-card-title {
 .card-content p mat-icon {
   color: var(--main-color);
 }
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
 
+div .mat-mini-fab {
+  margin-right: 10px;
+}
 .mat-mini-fab {
   background-color: var(--main-color);
   box-shadow: 3px 2px 5px rgb(113, 113, 113);
-  position: relative;
-  left: 85%;
 }
 button:hover {
   transform: scale(115%);

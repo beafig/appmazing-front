@@ -35,13 +35,33 @@
         {{ product.fk_category.name }}
       </p>
     </mat-card-content>
-    <button
-      mat-mini-fab
-      aria-label="Button with a return icon"
-      title="Botón de volver atrás"
-      (click)="navigateToHome()"
-    >
-      <mat-icon>replay</mat-icon>
-    </button>
+    <div class="buttons-container">
+      <div>
+        <button
+          mat-mini-fab
+          aria-label="Button with a return icon"
+          title="Botón ver contacto anterior"
+          (click)="goToPrevious()"
+        >
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          aria-label="Button with a return icon"
+          title="Botón ver contacto siguiente"
+          (click)="goToNext()"
+        >
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+      <button
+        mat-mini-fab
+        aria-label="Button with a return icon"
+        title="Botón de volver atrás"
+        (click)="navigateToHome()"
+      >
+        <mat-icon>replay</mat-icon>
+      </button>
+    </div>
   </mat-card>
 </div>
