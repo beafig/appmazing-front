@@ -28,10 +28,15 @@ email:string;
       phone_number: this.phone_number,
       email: this.email
     }
-      this.contactsService.newContact(contact);
-      if(contact.name === undefined || contact.first_surname === undefined || contact.phone_number === undefined || contact.email){
+      if(contact.name === undefined || contact.first_surname === undefined || contact.phone_number === undefined || contact.email === undefined){
         alert('Todos los campos son obligarios excepto el segundo apellido')
+        console.log(contact.name);
+        console.log(contact.first_surname);
+        console.log(contact.phone_number);
+        console.log(contact.email);
+        
       } else {
+        this.contactsService.newContact(contact);
         await this.navigateToHome();
       }
   }

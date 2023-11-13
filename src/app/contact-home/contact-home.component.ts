@@ -28,7 +28,7 @@ export class ContactHomeComponent implements OnInit{
   this.router.navigate(['/contact', row.id]);
   }
 
-  // método para ordenar por nombre de forma ascendente, uso el SpreadOperator [...array], y ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo
+  // método para ordenar por nombre de forma ascendente, uso el SpreadOperator [...array], ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo el componente
 sortByNameAsc(){
   this.contacts = [...this.contacts]
   this.contacts.sort((a, b)=>{

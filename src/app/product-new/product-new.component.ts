@@ -51,11 +51,11 @@ categories: Category[] = []
       date_added : this.product.date_added,
       fk_category: this.category
     }
-    this.productsService.newProduct(product);
-    console.log(product)
+// falta por controlar categories, que nunca es undefined ya que es Category{}
     if(product.name === undefined || product.stock === undefined || product.price=== undefined){
       alert('Todos los campos son obligarios excepto la fecha')
     } else {
+      this.productsService.newProduct(product);
       await this.navigateToHome();
     }
 }

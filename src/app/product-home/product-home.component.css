@@ -13,6 +13,14 @@ th {
   font-size: 15px;
   color: white;
 }
+.cell-container {
+  display: flex;
+  align-items: center;
+}
+
+.cell-container mat-icon {
+  cursor: pointer;
+}
 .tr-row {
   cursor: pointer;
 }

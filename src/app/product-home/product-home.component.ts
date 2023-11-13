@@ -22,5 +22,31 @@ export class ProductHomeComponent implements OnInit {
     this.router.navigate(['/product', row.id])
   }
 
+  sortByPriceAsc(){
+    this.products = [...this.products];
+  this.products.sort((a, b)=>{
+    return a.price - b.price
+  })
+  }
+  sortByPriceDesc(){
+    this.products = [...this.products];
+  this.products.sort((a, b)=>{
+    return b.price - a.price
+  })
+  }
+
+  sortByCategoryAsc(){
+    this.products = [...this.products];
+    this.products.sort((a, b)=>{
+      return a.fk_category.name.localeCompare(b.fk_category.name)
+    })
+  }
+
+  sortByCategoryDesc(){
+    this.products = [...this.products];
+    this.products.sort((a, b)=>{
+      return b.fk_category.name.localeCompare(a.fk_category.name)
+    })
+  }
 displayedColumns: string[] = ['id', 'name', 'stock', 'price', 'active', 'date_added', 'fk_category' ]
 }
