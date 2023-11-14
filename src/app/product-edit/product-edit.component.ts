@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Category } from "model/Category";
 import { Product } from "model/Product";
 import { ProductsService } from "../products.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CategoriesService } from "../categories.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-product-edit",
@@ -11,6 +12,8 @@ import { CategoriesService } from "../categories.service";
   styleUrls: ["./product-edit.component.css"],
 })
 export class ProductEditComponent implements OnInit {
+  @ViewChild("form", { static: false }) form: NgForm;
+
   product: Product;
   categories: Category[] = [];
   category: Category = new Category();
@@ -33,10 +36,21 @@ export class ProductEditComponent implements OnInit {
   }
 
   async updateProduct() {
-    this.verifyStock();
-    this.verifyDate();
-    this.productService.updateProduct(this.product);
-    await this.navigateToProductDetail();
+    if (
+      this.form.controls["name"].hasError("required") ||
+      this.form.controls["stock"].hasError("required") ||
+      this.form.controls["price"].hasError("required") ||
+      this.form.controls["fk_category"].hasError("required")
+    ) {
+      alert(
+        "Revisa el formulario para asegurarte de que todos los campos son válidos."
+      );
+    } else {
+      this.verifyStock();
+      this.verifyDate();
+      this.productService.updateProduct(this.product);
+      await this.navigateToProductDetail();
+    }
   }
   verifyStock() {
     if (this.product.stock > 0) {
