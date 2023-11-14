@@ -3,7 +3,17 @@
     *ngIf="product"
     [ngClass]="product.active ? 'card' : 'card inactive'"
   >
-    <mat-card-title>Detalle del producto</mat-card-title>
+    <mat-card-title
+      >Detalle del producto
+      <button
+        mat-mini-fab
+        type="button"
+        (click)="updateProduct()"
+        title="Botón para editar producto"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-title>
     <mat-card-content class="card-content">
       <p>
         <mat-icon> shopping_cart</mat-icon>
@@ -39,16 +49,14 @@
       <div>
         <button
           mat-mini-fab
-          aria-label="Button with a return icon"
-          title="Botón ver contacto anterior"
+          title="Botón ver producto anterior"
           (click)="goToPrevious()"
         >
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
         <button
           mat-mini-fab
-          aria-label="Button with a return icon"
-          title="Botón ver contacto siguiente"
+          title="Botón ver producto siguiente"
           (click)="goToNext()"
         >
           <mat-icon>keyboard_arrow_right</mat-icon>
@@ -56,7 +64,6 @@
       </div>
       <button
         mat-mini-fab
-        aria-label="Button with a return icon"
         title="Botón de volver atrás"
         (click)="navigateToHome()"
       >

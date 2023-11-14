@@ -30,6 +30,11 @@ export class ProductDetailComponent implements OnInit {
   navigateToHome() {
     this.router.navigate(["/products"]);
   }
+
+  updateProduct() {
+    this.router.navigate(["product/edit", this.route.snapshot.params["id"]]);
+  }
+
   async createIdsArray(): Promise<number[]> {
     return new Promise((resolve) => {
       this.productsService.getProducts().subscribe((data) => {

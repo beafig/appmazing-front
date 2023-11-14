@@ -4,7 +4,7 @@
 }
 .card {
   margin: 70px 0;
-  padding: 20px 40px 20px 40px;
+  padding: 20px 40px 30px 40px;
   box-shadow: 10px 5px 5px rgb(113, 113, 113);
   border: 1px solid rgb(113, 113, 113);
   font-family: var(--second-font);
@@ -15,6 +15,24 @@ mat-card-title {
   margin-bottom: 20px;
   text-decoration: underline;
   color: var(--main-color);
+  display: flex;
+}
+mat-card-title button {
+  margin-left: 15px;
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card-title button mat-icon {
+  color: var(--main-color);
+  font-size: 25px;
+}
+
+mat-card-title button mat-icon:hover {
+  transform: scale(125%);
 }
 .card-content p {
   display: flex;
