@@ -2,13 +2,13 @@
   <mat-card class="card">
     <mat-card-title>Nuevo Contacto</mat-card-title>
     <mat-card-content class="card-content">
-      <form (submit)="newContact()">
+      <!-- #form para que funcionen las validaciones -->
+      <form (submit)="newContact()" #form="ngForm">
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
           <!-- [(ngmodel)] -> cada uno de los campos del formulario-->
           <input matInput type="text" name="name" [(ngModel)]="name" required />
         </mat-form-field>
-
         <mat-form-field appearance="outline">
           <mat-label>Primer apellido</mat-label>
           <input
@@ -46,6 +46,7 @@
             name="email"
             [(ngModel)]="email"
             required
+            pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
           />
         </mat-form-field>
 

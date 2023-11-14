@@ -2,7 +2,7 @@
   <mat-card class="card">
     <mat-card-title>Nuevo Producto</mat-card-title>
     <mat-card-content class="card-content">
-      <form (submit)="newProduct()">
+      <form (submit)="newProduct()" #form="ngForm">
         <mat-form-field appearance="outline">
           <mat-label>Producto</mat-label>
           <input
