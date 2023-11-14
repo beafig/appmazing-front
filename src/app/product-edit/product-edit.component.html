@@ -1,0 +1,88 @@
+<div class="card-container">
+  <mat-card class="card" *ngIf="product">
+    <mat-card-title>Editar Producto</mat-card-title>
+    <mat-card-content class="card-content">
+      <form (submit)="updateProduct()" #form="ngForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            type="text"
+            name="name"
+            [(ngModel)]="product.name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Stock</mat-label>
+          <input
+            matInput
+            type="number"
+            name="stock"
+            [(ngModel)]="product.stock"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            type="number"
+            name="price"
+            [(ngModel)]="product.price"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de adición</mat-label>
+          <!-- [matDatepicker]="picker": Vincula el campo de entrada al componente mat-datepicker con la referencia #picker.
+          -->
+          <input
+            matInput
+            [matDatepicker]="picker"
+            name="date_added"
+            [(ngModel)]="product.date_added"
+          />
+          <!-- Agrega un botón de alternar que permite abrir y cerrar el selector de fecha. El atributo [for]="picker" asocia este botón con el componente mat-datepicker que tiene la referencia #picker. -->
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <!-- Este es el componente emergente que permite al usuario seleccionar una fecha. -->
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Categoría</mat-label>
+          <mat-select
+            [(ngModel)]="product.fk_category.id"
+            name="fk_category"
+            required
+          >
+            <mat-option *ngFor="let categ of categories" [value]="categ.id">
+              {{ categ.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="buttons">
+          <button
+            mat-raised-button
+            type="submit"
+            class="save-btn"
+            title="Botón para guardar los datos"
+          >
+            <mat-icon>save</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            type="button"
+            (click)="cancelUpdate()"
+            title="Botón para cancelar"
+          >
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

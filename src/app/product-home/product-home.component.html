@@ -54,7 +54,21 @@
       {{ products.fk_category.name }}
     </td>
   </ng-container>
-
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let products">
+      <!-- $event.stopPropagation() -> evitar que al hacer click en el botón me abra el detalle del contacto ya que toda la fila tiene el evento de abrir detalle  -->
+      <button
+        mat-icon-button
+        (click)="editProductDetail(products.id); $event.stopPropagation()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <!-- <button mat-icon-button (click)="$event.stopPropagation()">
+        <mat-icon>delete</mat-icon>
+      </button> -->
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tr-header"></tr>
   <!-- [ngClass]: clase propia de Angular en la que se puede meter código, es un ternario para que aplique una clase u otra en función de si products.active es true o false, lo aplico en el tr para que se aplique la clase a toda la fila, y no solo a la celda donde está el dato de si es active o no, por lo mismo hago row.active en lugar de product.active -->
   <tr

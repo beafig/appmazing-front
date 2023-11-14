@@ -9,6 +9,7 @@ import { ContactNewComponent } from "./contact-new/contact-new.component";
 import { ProductNewComponent } from "./product-new/product-new.component";
 import { MainHomeComponent } from "./main-home/main-home.component";
 import { ContactEditComponent } from "./contact-edit/contact-edit.component";
+import { ProductEditComponent } from "./product-edit/product-edit.component";
 
 // definimos las rutas del proyecto y a que componenente nos lleva
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: "products", component: ProductHomeComponent },
   { path: "product/new", component: ProductNewComponent },
   { path: "product/:id", component: ProductDetailComponent },
+  { path: "product/edit/:id", component: ProductEditComponent },
 ];
 
 @NgModule({
