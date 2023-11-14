@@ -36,7 +36,7 @@ export class ContactDetailComponent implements OnInit {
     this.router.navigate(["/contacts"]);
   }
 
-  async updateContact() {
+  updateContact() {
     this.router.navigate(["contact/edit", this.route.snapshot.params["id"]]);
   }
 

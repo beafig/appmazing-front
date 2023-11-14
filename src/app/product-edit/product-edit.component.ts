@@ -33,10 +33,24 @@ export class ProductEditComponent implements OnInit {
   }
 
   async updateProduct() {
+    this.verifyStock();
+    this.verifyDate();
     this.productService.updateProduct(this.product);
     await this.navigateToProductDetail();
   }
+  verifyStock() {
+    if (this.product.stock > 0) {
+      this.product.active = true;
+    } else {
+      this.product.active = false;
+    }
+  }
 
+  verifyDate() {
+    if (this.product.date_added == null) {
+      this.product.date_added = new Date();
+    }
+  }
   cancelUpdate() {
     this.navigateToProductDetail();
   }
