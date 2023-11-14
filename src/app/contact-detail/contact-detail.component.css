@@ -16,6 +16,21 @@ mat-card-title {
   text-decoration: underline;
   color: var(--main-color);
 }
+
+mat-card-title button {
+  margin-left: 10px;
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+}
+
+mat-card-title button mat-icon {
+  color: var(--main-color);
+  font-size: 25px;
+}
+
+mat-card-title button mat-icon:hover {
+  transform: scale(125%);
+}
 .card-content p {
   display: flex;
   align-items: center;

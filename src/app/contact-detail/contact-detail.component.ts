@@ -31,8 +31,13 @@ export class ContactDetailComponent implements OnInit {
         });
     });
   }
+
   navigateToHome() {
     this.router.navigate(["/contacts"]);
+  }
+
+  async updateContact() {
+    this.router.navigate(["contact/edit", this.route.snapshot.params["id"]]);
   }
 
   // método para obtener los datos de los contactos de la BD, y crear un nuevo array solo con los ids, es una promesa ya que quiero que primero obtenga los datos y luego cree el array, si no creará un array ids vacío hasta que se obtengan los datos

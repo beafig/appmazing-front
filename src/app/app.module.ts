@@ -15,6 +15,7 @@ import { ContactNewComponent } from './contact-new/contact-new.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { MainHomeComponent } from './main-home/main-home.component';
+import { ContactEditComponent } from './contact-edit/contact-edit.component';
 
 @NgModule({
   // los componentes se declaran automáticamente al crearlos
@@ -26,7 +27,8 @@ import { MainHomeComponent } from './main-home/main-home.component';
     ProductDetailComponent,
     ContactNewComponent,
     ProductNewComponent,
-    MainHomeComponent
+    MainHomeComponent,
+    ContactEditComponent
   ],
   // importamos los módulos que vamos a usar, los 3 primeros se declaran al crear el proyecto, los demas los vamos añadiendo cuando los necesitamos
   imports: [

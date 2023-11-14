@@ -3,7 +3,18 @@
 *nfIf-> es un conficional If propio de angular, que si contact es false, es decir si no tiene datos no los carga, y cuando es true, que ya tiene los datos, los muestra-->
 <div class="card-container">
   <mat-card class="card" *ngIf="contact">
-    <mat-card-title>Detalle del contacto</mat-card-title>
+    <mat-card-title
+      >Detalle del contacto
+      <button
+        class="edit-btn"
+        mat-mini-fab
+        type="button"
+        (click)="updateContact()"
+        title="Botón para editar contacto"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-title>
     <mat-card-content class="card-content">
       <p>
         <mat-icon>contacts</mat-icon>
@@ -26,33 +37,33 @@
         <strong>Email:</strong> {{ contact.email }}
       </p>
     </mat-card-content>
-    <div class="buttons-container">
-      <div>
+    <mat-card-actions>
+      <div class="buttons-container">
+        <div>
+          <button
+            mat-mini-fab
+            title="Botón ver contacto anterior"
+            (click)="goToPrevious()"
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            title="Botón ver contacto siguiente"
+            (click)="goToNext()"
+          >
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
         <button
           mat-mini-fab
           aria-label="Button with a return icon"
-          title="Botón ver contacto anterior"
-          (click)="goToPrevious()"
+          title="Botón de volver atrás"
+          (click)="navigateToHome()"
         >
-          <mat-icon>keyboard_arrow_left</mat-icon>
-        </button>
-        <button
-          mat-mini-fab
-          aria-label="Button with a return icon"
-          title="Botón ver contacto siguiente"
-          (click)="goToNext()"
-        >
-          <mat-icon>keyboard_arrow_right</mat-icon>
+          <mat-icon>replay</mat-icon>
         </button>
       </div>
-      <button
-        mat-mini-fab
-        aria-label="Button with a return icon"
-        title="Botón de volver atrás"
-        (click)="navigateToHome()"
-      >
-        <mat-icon>replay</mat-icon>
-      </button>
-    </div>
+    </mat-card-actions>
   </mat-card>
 </div>
