@@ -33,7 +33,7 @@ footer {
 }
 footer mat-icon {
   color: blueviolet;
-  padding: 2px;
+  margin: 0 2px;
 }
 
 footer p {

@@ -2,16 +2,16 @@
   >Añadir nuevo contacto</a
 >
 <!-- mat-table: para indicar que la table viene de la librería material, del módulo table
-  [dataSource]: indicamos de donde va a recibir lo datos, que es el array contacts que definimos en el .ts
-class: clase propia de la librería material, que da estilos a la tabla -->
+--[dataSource]: indicamos de donde va a recibir lo datos, que es el array contacts que definimos en el .ts
+--class: clase propia de la librería material, que da estilos a la tabla -->
 <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
   <!-- ng-container: etiqueta propia del módulo table
-  matColumnDef: indicamos que elemento se va a mostrar, que es uno de los elementos de la BD
-  mat-header-cell: plantilla del header de la tabla de la librería
-  *matHeaderCellDef: 
-  mat-cell: plantilla de celda de la librería
-  *matCellDef= "let contact" -> definimos el nombre para acceder a los datos del array contacts
-  {{contact.id}}: datos del array contacts, .id para acceder al valor del id. para mostrar cualquier valor del ts debes ponerlo entre doble {{}}
+  --matColumnDef: indicamos que elemento se va a mostrar, definidos en el .ts en displayedColumns
+  --mat-header-cell:  indica que es una celda de encabezado
+  *matHeaderCellDef: se utiliza para definir el contenido del encabezado. En este caso, simplemente se muestra el texto "Id.".
+  --mat-cell: indica que es una celda de datos
+  --*matCellDef= "let contact" ->  se utiliza para definir la relación entre la celda y los datos. En este caso, se usa la variable local contact que representa cada elemento de la lista de contactos.
+  --{{contact.id}}: datos del array contacts, .id para acceder al valor del id. para mostrar cualquier valor del ts debes ponerlo entre doble {{}}
  -->
   <!-- ID Column -->
   <ng-container matColumnDef="id">
@@ -23,7 +23,7 @@ class: clase propia de la librería material, que da estilos a la tabla -->
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef class="second-cell">
-      <div class="cell-container">
+      <div class="icon-container">
         Nombre
         <mat-icon (click)="sortByNameAsc()">keyboard_arrow_up</mat-icon>
         <mat-icon (click)="sortByNameDesc()">keyboard_arrow_down</mat-icon>
@@ -57,7 +57,7 @@ class: clase propia de la librería material, que da estilos a la tabla -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let contact">
-      <!--$event.stopPropagation() -> evitar que al hacer click en el botón me abra el detalle del contacto ya que toda la fila tiene el evento de abrir detalle  -->
+      <!--$event.stopPropagation() -> evitar que al hacer click en el botón me abra el detalle del contacto ya que toda la fila tiene el evento (click)="openDetailForm(row)"  -->
       <button
         mat-icon-button
         (click)="editContactDetail(contact.id); $event.stopPropagation()"
@@ -69,9 +69,11 @@ class: clase propia de la librería material, que da estilos a la tabla -->
       </button> -->
     </td>
   </ng-container>
-  <!-- *matHeaderRowDef:  es la fila del encabezado, indicamos que las columnas serán las definidas en el archivo .ts en displayedColumns -->
+  <!-- mat-header-row: define la fila de encabezado de la tabla
+  -- *matHeaderRowDef:  es la fila del encabezado, indicamos que las columnas serán las definidas en el array displayedColumns -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tr-header"></tr>
-  <!-- mat-row: define las filas de la tabla -->
+  <!-- mat-row: define las filas de la tabla
+  -- *matRowDef -> establece cómo se deben mostrar los datos en las celdas de la fila. 'let row' crea una variable local llamada row que representa cada elemento de la lista de datos. 'columns: displayedColumns' especifica qué columnas se deben mostrar y en qué orden, basándose en el array displayedColumns -->
   <tr
     mat-row
     *matRowDef="let row; columns: displayedColumns"

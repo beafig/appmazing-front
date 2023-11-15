@@ -12,6 +12,7 @@ import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 import { ProductEditComponent } from "./product-edit/product-edit.component";
 
 // definimos las rutas del proyecto y a que componenente nos lleva
+//   { path: "contact/new", component: ContactNewComponent }, { path: "contact/:id", component: ContactDetailComponent }, -> se deben definir en este orden ya que tienen el mismo comiendo de URL, y si ponemos primero la de :id provoca errores ya que identifica /new como si fuera el parámetro id
 const routes: Routes = [
   { path: "", component: MainHomeComponent },
   { path: "contacts", component: ContactHomeComponent },

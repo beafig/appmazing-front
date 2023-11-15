@@ -6,14 +6,14 @@ import { NgForm } from "@angular/forms";
 @Component({
   selector: "app-contact-edit",
   templateUrl: "./contact-edit.component.html",
-  styleUrls: ["./contact-edit.component.css"],
+  styleUrls: [
+    //ya que los 2 componentes tienen los mismo estilos pensé en compartir la misma hoja de estilos pero no es una buena práctica
+    // "../contact-new/contact-new.component.css",
+    "./contact-edit.component.css",
+  ],
 })
 export class ContactEditComponent implements OnInit {
-  // El parámetro static en @ViewChild determina cuándo se debe buscar el elemento referenciado (#form ).:
-
-  // Cuando static es true, Angular intenta encontrar el elemento referenciado (#form) durante la fase de compilación..
-
-  // Cuando static es false, Angular espera hasta la fase de ejecución (runtime) para buscar el elemento referenciado.
+  // El parámetro static en @ViewChild determina cuándo se debe buscar el elemento referenciado (#form ).Cuando static es true, Angular intenta encontrar el elemento referenciado (#form) durante la fase de compilación.Cuando static es false, Angular espera hasta la fase de ejecución (runtime) para buscar el elemento referenciado.
   @ViewChild("form", { static: false }) form: NgForm;
 
   contact: any;
@@ -44,8 +44,13 @@ export class ContactEditComponent implements OnInit {
         "Revisa el formulario para asegurarte de que todos los campos son válidos."
       );
     } else {
-      this.contactService.updateContact(this.contact);
-      await this.navigateToContactDetail();
+      try {
+        await this.contactService.updateContact(this.contact);
+        this.navigateToContactDetail();
+      } catch (e) {
+        alert("Error al editar el contacto, inténtelo de nuevo");
+        console.log(e);
+      }
     }
   }
 

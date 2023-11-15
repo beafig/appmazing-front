@@ -22,6 +22,7 @@ export class ProductsService {
     return this.http.post<any>(url, body, { headers });
   }
 
+  // este caso el parámetro es de tipo Product porque hemos creado el objeto Product con su modelo
   newProduct(product: Product): void {
     const url = "http://localhost:30030/products/add";
     const headers = new HttpHeaders().set("Content-Type", "application/json");

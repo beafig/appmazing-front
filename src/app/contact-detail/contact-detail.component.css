@@ -3,8 +3,8 @@
   justify-content: center;
 }
 .card {
-  margin: 70px 0;
-  padding: 20px 40px 30px 40px;
+  margin-top: 70px;
+  padding: 20px 40px 40px 40px;
   box-shadow: 10px 5px 5px rgb(113, 113, 113);
   border: 1px solid rgb(113, 113, 113);
   font-family: var(--second-font);
@@ -16,36 +16,27 @@ mat-card-title {
   text-decoration: underline;
   color: var(--main-color);
   display: flex;
+  gap: 15px;
 }
 
 mat-card-title button {
-  margin-left: 15px;
-  background-color: transparent;
+  background-color: white;
   border: 2px solid var(--main-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-mat-card-title button mat-icon {
+mat-card-title button mat-icon,
+.card-content p mat-icon {
   color: var(--main-color);
   font-size: 25px;
 }
 
-mat-card-title button mat-icon:hover {
-  transform: scale(125%);
-}
 .card-content p {
   display: flex;
   align-items: center;
-}
-.card-content p mat-icon,
-.card-content p strong {
-  margin-right: 5px;
-}
-
-.card-content p mat-icon {
-  color: var(--main-color);
+  gap: 8px;
 }
 
 .buttons-container {
@@ -53,18 +44,11 @@ mat-card-title button mat-icon:hover {
   justify-content: space-between;
 }
 
-div .mat-mini-fab {
-  margin-right: 10px;
-}
-.mat-mini-fab {
+.buttons-container .mat-mini-fab {
   background-color: var(--main-color);
   box-shadow: 3px 2px 5px rgb(113, 113, 113);
+  margin-right: 10px;
 }
 button:hover {
   transform: scale(115%);
-}
-
-button a {
-  text-decoration: none;
-  color: white;
 }

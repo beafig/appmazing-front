@@ -49,7 +49,7 @@ export class ContactHomeComponent implements OnInit {
       return b.name.localeCompare(a.name);
     });
   }
-  // aquí definimos todas las columnas que va a tener nuestra table, que son los mismos elementos (con el mismo nombre) que tenemos definidos en la base de datos
+  // aquí definimos todas las columnas que va a tener nuestra table
   displayedColumns: string[] = [
     "id",
     "name",

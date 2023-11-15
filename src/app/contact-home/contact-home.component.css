@@ -1,5 +1,6 @@
 table {
   margin: 20px 0px 80px 40px;
+  /* width: calc(100% - 80px); -> ocupa el 100% del ancho de su contenedor padre menos 80 píxeles. */
   width: calc(100% - 80px);
   font-family: var(--second-font);
   letter-spacing: 1.5px;
@@ -15,15 +16,13 @@ th {
   font-size: 15px;
   color: white;
 }
-.cell-container {
+.icon-container {
   display: flex;
   align-items: center;
 }
 
-.cell-container mat-icon {
-  cursor: pointer;
-}
-.tr-row {
+.icon-container mat-icon,
+tr-row {
   cursor: pointer;
 }
 
@@ -31,6 +30,7 @@ th {
   background-color: var(--second-color);
 }
 
+/* celdas de la primera columna, las clases aparecen al inspeccionar el elemento */
 td.mat-cell:first-of-type,
 td.mat-footer-cell:first-of-type,
 th.mat-header-cell:first-of-type {

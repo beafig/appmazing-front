@@ -14,8 +14,10 @@ import { NgForm } from "@angular/forms";
 export class ProductNewComponent implements OnInit {
   @ViewChild("form", { static: true }) form: NgForm;
 
-  // product va a ser de tipo Product, y viene del modelo Product.ts
+  // product va a ser de tipo Product, y viene del modelo Product.ts. estos objetos deben estár inicializados
   product: Product = new Product();
+
+  // debo tener el objeto category ya que es donde se cargará el dato del id de la categoría para pasárselo a product
   category: Category = new Category();
   // array de tipo Category donde voy a guardar los datos de la BD con el método getCategories()
   categories: Category[] = [];
@@ -67,8 +69,14 @@ export class ProductNewComponent implements OnInit {
         "Revisa el formulario para asegurarte de que todos los campos son válidos."
       );
     } else {
-      this.productsService.newProduct(product);
-      await this.navigateToHome();
+      try {
+        await this.productsService.newProduct(product);
+        this.navigateToHome();
+      } catch (error) {
+        alert(
+          "Se ha producido un error al crear el nuevo producto. Inténtelo de nuevo"
+        );
+      }
     }
   }
 

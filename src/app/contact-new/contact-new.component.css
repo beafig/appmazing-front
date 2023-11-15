@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
 }
-
 .card {
-  margin: 70px 0;
-  padding: 20px 40px 20px 40px;
+  margin-top: 70px;
+  padding: 20px 40px 30px 40px;
   min-width: 50%;
   box-shadow: 10px 5px 5px rgb(113, 113, 113);
   border: 1px solid rgb(113, 113, 113);

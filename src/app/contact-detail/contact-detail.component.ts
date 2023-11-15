@@ -11,9 +11,10 @@ export class ContactDetailComponent implements OnInit {
   // aquí se guarda el contacto obtenido del servicio
   contact: any;
 
-  // array para guardar todos los contactos de la BD
+  // array para guardar todos los contactos de la BD y los ids, necesario para poder ver otros contactos desde el detalle de uno de ellos
   contacts: any = [];
-  ids = [];
+  ids: number[] = [];
+
   // route: ActivedRoute para recoger el parámetro id de la url
   constructor(
     private contactsService: ContactsService,
@@ -22,8 +23,8 @@ export class ContactDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // la primera línea hace que mi componente esté suscrito a los cambios de ruta, por ello cuando se ejecuta de la función goToPrevious(), se recarga la página directamente y me lleva a la url del contacto seleccionado
-    this.route.params.subscribe((params) => {
+    // la primera línea hace que mi componente esté suscrito a los cambios de ruta, por ello cuando se ejecuta de la función goToPrevious(), se recarga la página directamente y me lleva a la url del contacto seleccionado, sin esta esta línea la página no se refresca automáticamente
+    this.route.params.subscribe(() => {
       this.contactsService
         .getContact(this.route.snapshot.params["id"])
         .subscribe((data) => {
@@ -52,7 +53,7 @@ export class ContactDetailComponent implements OnInit {
   }
 
   // método para ver el detalle del contacto anterior, primero obtengo el array de ids del método anterior
-  // obtengo el id de la ruta anterior convirtiéndolo a number
+  // obtengo el id del contacto convirtiéndolo a number
   // obtengo el index de ese id con el método findIndex, tengo que trabajar con los index porque los ids no son consecutivos
   // condicional para comprobar si el índice es 0, en cuyo caso me llevará al último elemento del array, que es la longitud del array -1
   async goToPrevious() {

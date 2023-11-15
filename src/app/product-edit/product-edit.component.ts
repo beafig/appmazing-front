@@ -16,7 +16,7 @@ export class ProductEditComponent implements OnInit {
 
   product: Product;
   categories: Category[] = [];
-  category: Category = new Category();
+
   constructor(
     private productService: ProductsService,
     private categoriesService: CategoriesService,
@@ -36,6 +36,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   async updateProduct() {
+    this.verifyStock();
+    this.verifyDate();
     if (
       this.form.controls["name"].hasError("required") ||
       this.form.controls["stock"].hasError("required") ||
@@ -46,12 +48,16 @@ export class ProductEditComponent implements OnInit {
         "Revisa el formulario para asegurarte de que todos los campos son válidos."
       );
     } else {
-      this.verifyStock();
-      this.verifyDate();
-      this.productService.updateProduct(this.product);
-      await this.navigateToProductDetail();
+      try {
+        await this.productService.updateProduct(this.product);
+        this.navigateToProductDetail();
+      } catch (e) {
+        alert("Error al editar el producto, inténtelo de nuevo");
+        console.log(e);
+      }
     }
   }
+
   verifyStock() {
     if (this.product.stock > 0) {
       this.product.active = true;
