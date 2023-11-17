@@ -8,6 +8,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
+  MAT_DATE_LOCALE,
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
@@ -28,6 +29,7 @@ import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 import { ProductEditComponent } from "./product-edit/product-edit.component";
 import { ChartsComponent } from "./charts/charts.component";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   // los componentes se declaran automáticamente al crearlos
@@ -65,7 +67,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     // librería para las gráficas
     NgxChartsModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: "es-ES" }, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

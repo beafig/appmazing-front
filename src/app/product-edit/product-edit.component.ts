@@ -5,6 +5,7 @@ import { ProductsService } from "../products.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CategoriesService } from "../categories.service";
 import { NgForm } from "@angular/forms";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-product-edit",
@@ -21,7 +22,8 @@ export class ProductEditComponent implements OnInit {
     private productService: ProductsService,
     private categoriesService: CategoriesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private datepipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -29,17 +31,12 @@ export class ProductEditComponent implements OnInit {
       .getProduct(this.route.snapshot.params["id"])
       .subscribe((data) => {
         this.product = data;
-        console.log(this.product.date_added);
-        console.log(typeof this.product.date_added);
-
-        // si ya es de tipo string porque no puedo hacer directamente un Slice
-        this.product.date_added = new Date(this.product.date_added);
-        console.log(typeof this.product.date_added);
-
-        // this.product.date_added = this.product.date_added
-        // .toISOString()
-        // .slice(0, 10);
-        console.log(typeof this.product.date_added);
+        const formatDate = this.datepipe.transform(
+          this.product.date_added,
+          "yyyy-MM-dd"
+        );
+        //funciona pero me sale este error
+        this.product.date_added = formatDate;
       });
     this.categoriesService.getCategories().subscribe((data) => {
       this.categories = data;
