@@ -7,14 +7,14 @@ import { ContactDetailComponent } from "./contact-detail/contact-detail.componen
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { ContactNewComponent } from "./contact-new/contact-new.component";
 import { ProductNewComponent } from "./product-new/product-new.component";
-import { MainHomeComponent } from "./main-home/main-home.component";
 import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 import { ProductEditComponent } from "./product-edit/product-edit.component";
+import { ChartsComponent } from "./charts/charts.component";
 
 // definimos las rutas del proyecto y a que componenente nos lleva
 //   { path: "contact/new", component: ContactNewComponent }, { path: "contact/:id", component: ContactDetailComponent }, -> se deben definir en este orden ya que tienen el mismo comiendo de URL, y si ponemos primero la de :id provoca errores ya que identifica /new como si fuera el parámetro id
 const routes: Routes = [
-  { path: "", component: MainHomeComponent },
+  { path: "", component: ChartsComponent },
   { path: "contacts", component: ContactHomeComponent },
   { path: "contact/new", component: ContactNewComponent },
   { path: "contact/:id", component: ContactDetailComponent },

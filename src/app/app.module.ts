@@ -24,9 +24,10 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 import { ContactNewComponent } from "./contact-new/contact-new.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProductNewComponent } from "./product-new/product-new.component";
-import { MainHomeComponent } from "./main-home/main-home.component";
 import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 import { ProductEditComponent } from "./product-edit/product-edit.component";
+import { ChartsComponent } from "./charts/charts.component";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   // los componentes se declaran automáticamente al crearlos
@@ -38,9 +39,9 @@ import { ProductEditComponent } from "./product-edit/product-edit.component";
     ProductDetailComponent,
     ContactNewComponent,
     ProductNewComponent,
-    MainHomeComponent,
     ContactEditComponent,
     ProductEditComponent,
+    ChartsComponent,
   ],
   // importamos los módulos que vamos a usar, los 3 primeros se declaran al crear el proyecto, los demas los vamos añadiendo cuando los necesitamos
   imports: [
@@ -61,9 +62,8 @@ import { ProductEditComponent } from "./product-edit/product-edit.component";
     FormsModule,
     MatInputModule,
     MatSelectModule,
-    // formato fechas
-    MatDatepickerModule,
-    MatNativeDateModule,
+    // librería para las gráficas
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

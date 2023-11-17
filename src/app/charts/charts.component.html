@@ -1,0 +1,64 @@
+<mat-card class="card">
+  <mat-card-title>Gráficas de contactos</mat-card-title>
+  <mat-card-content>
+    <div class="chart-row">
+      <div>
+        <p><strong>Inicial del apellido</strong></p>
+        <ngx-charts-bar-vertical
+          [view]="[400, 300]"
+          [results]="initialLetter"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          xAxisLabel="Inicial del apellido"
+          yAxisLabel="Número de contactos"
+        ></ngx-charts-bar-vertical>
+      </div>
+      <div>
+        <p><strong>Longitud del nombre</strong></p>
+        <!--  [results]="contactsByFullName[0].series" si no lo pongo así no funciona -->
+        <ngx-charts-bar-vertical
+          *ngIf="contactsByFullName && contactsByFullName[0]"
+          [view]="[400, 300]"
+          [results]="contactsByFullName[0].series"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          xAxisLabel="Longitud del nombre"
+          yAxisLabel="Número de contactos"
+        ></ngx-charts-bar-vertical>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div>
+        <p><strong>Extensiones</strong></p>
+        <ngx-charts-pie-chart
+          [view]="[400, 300]"
+          [results]="emailExtensions"
+          [labels]="true"
+          [doughnut]="true"
+        ></ngx-charts-pie-chart>
+      </div>
+      <div>
+        <p><strong>Prefijo</strong></p>
+        <ngx-charts-bar-horizontal
+          [view]="[400, 300]"
+          [results]="phonePrefixData"
+          [xAxis]="true"
+          [yAxis]="true"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          xAxisLabel="Número de los contactos"
+          yAxisLabel="Prefijo"
+        ></ngx-charts-bar-horizontal>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>Gráficas de productos</mat-card-title>
+</mat-card>

@@ -29,6 +29,17 @@ export class ProductEditComponent implements OnInit {
       .getProduct(this.route.snapshot.params["id"])
       .subscribe((data) => {
         this.product = data;
+        console.log(this.product.date_added);
+        console.log(typeof this.product.date_added);
+
+        // si ya es de tipo string porque no puedo hacer directamente un Slice
+        this.product.date_added = new Date(this.product.date_added);
+        console.log(typeof this.product.date_added);
+
+        // this.product.date_added = this.product.date_added
+        // .toISOString()
+        // .slice(0, 10);
+        console.log(typeof this.product.date_added);
       });
     this.categoriesService.getCategories().subscribe((data) => {
       this.categories = data;
@@ -37,7 +48,7 @@ export class ProductEditComponent implements OnInit {
 
   async updateProduct() {
     this.verifyStock();
-    this.verifyDate();
+    // this.verifyDate();
     if (
       this.form.controls["name"].hasError("required") ||
       this.form.controls["stock"].hasError("required") ||
