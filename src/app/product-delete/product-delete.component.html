@@ -1,0 +1,10 @@
+<h1>Borrar Producto</h1>
+<p>
+  ¿Estás seguro/a de que deseas borrar <strong>{{ productName }} </strong>?
+</p>
+<div class="buttons">
+  <button mat-raise-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  <button mat-raise-button class="delete-btn" (click)="confirm()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

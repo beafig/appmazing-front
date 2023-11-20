@@ -30,6 +30,7 @@ import { ChartsComponent } from "./charts/charts.component";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { DatePipe } from "@angular/common";
 import { ContactDeleteComponent } from "./contact-delete/contact-delete.component";
+import { ProductDeleteComponent } from "./product-delete/product-delete.component";
 
 @NgModule({
   // los componentes se declaran automáticamente al crearlos
@@ -45,8 +46,9 @@ import { ContactDeleteComponent } from "./contact-delete/contact-delete.componen
     ProductEditComponent,
     ChartsComponent,
     ContactDeleteComponent,
+    ProductDeleteComponent,
   ],
-  entryComponents: [ContactDeleteComponent],
+  entryComponents: [ContactDeleteComponent, ProductDeleteComponent],
   // importamos los módulos que vamos a usar, los 3 primeros se declaran al crear el proyecto, los demas los vamos añadiendo cuando los necesitamos
   imports: [
     BrowserModule,

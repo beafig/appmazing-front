@@ -13,6 +13,14 @@
       >
         <mat-icon>edit</mat-icon>
       </button>
+      <button
+        mat-mini-fab
+        type="button"
+        (click)="openDeleteDialog(product.id, product.name)"
+        title="Botón para eliminar producto"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
     </mat-card-title>
     <mat-card-content class="card-content">
       <p>

@@ -64,9 +64,14 @@
       >
         <mat-icon>edit</mat-icon>
       </button>
-      <!-- <button mat-icon-button (click)="$event.stopPropagation()">
+      <button
+        mat-icon-button
+        (click)="
+          openDeleteDialog(products.id, products.name); $event.stopPropagation()
+        "
+      >
         <mat-icon>delete</mat-icon>
-      </button> -->
+      </button>
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tr-header"></tr>
