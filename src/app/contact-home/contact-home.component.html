@@ -64,9 +64,14 @@
       >
         <mat-icon>edit</mat-icon>
       </button>
-      <!-- <button mat-icon-button (click)="$event.stopPropagation()">
+      <button
+        mat-icon-button
+        (click)="
+          openDeleteDialog(contact.id, contact.name); $event.stopPropagation()
+        "
+      >
         <mat-icon>delete</mat-icon>
-      </button> -->
+      </button>
     </td>
   </ng-container>
   <!-- mat-header-row: define la fila de encabezado de la tabla

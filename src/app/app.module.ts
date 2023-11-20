@@ -11,10 +11,9 @@ import {
   MAT_DATE_LOCALE,
   MatButtonModule,
   MatCardModule,
-  MatDatepickerModule,
+  MatDialogModule,
   MatIconModule,
   MatInputModule,
-  MatNativeDateModule,
   MatSelectModule,
   MatTableModule,
   MatToolbarModule,
@@ -23,13 +22,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { ContactNewComponent } from "./contact-new/contact-new.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ProductNewComponent } from "./product-new/product-new.component";
 import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 import { ProductEditComponent } from "./product-edit/product-edit.component";
 import { ChartsComponent } from "./charts/charts.component";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { DatePipe } from "@angular/common";
+import { ContactDeleteComponent } from "./contact-delete/contact-delete.component";
 
 @NgModule({
   // los componentes se declaran automáticamente al crearlos
@@ -44,7 +44,9 @@ import { DatePipe } from "@angular/common";
     ContactEditComponent,
     ProductEditComponent,
     ChartsComponent,
+    ContactDeleteComponent,
   ],
+  entryComponents: [ContactDeleteComponent],
   // importamos los módulos que vamos a usar, los 3 primeros se declaran al crear el proyecto, los demas los vamos añadiendo cuando los necesitamos
   imports: [
     BrowserModule,
@@ -64,6 +66,8 @@ import { DatePipe } from "@angular/common";
     FormsModule,
     MatInputModule,
     MatSelectModule,
+    // modulo para abrir ventana modal
+    MatDialogModule,
     // librería para las gráficas
     NgxChartsModule,
   ],

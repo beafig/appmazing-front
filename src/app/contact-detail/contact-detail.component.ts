@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactsService } from "../contacts.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatDialog } from "@angular/material";
+import { ContactDeleteComponent } from "../contact-delete/contact-delete.component";
 
 @Component({
   selector: "app-contact-detail",
@@ -19,7 +21,8 @@ export class ContactDetailComponent implements OnInit {
   constructor(
     private contactsService: ContactsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -39,6 +42,12 @@ export class ContactDetailComponent implements OnInit {
 
   updateContact() {
     this.router.navigate(["contact/edit", this.route.snapshot.params["id"]]);
+  }
+
+  openDeleteDialog(contactId: number, contactName: string): void {
+    this.dialog.open(ContactDeleteComponent, {
+      data: { contactId: contactId, contactName: contactName },
+    });
   }
 
   // método para obtener los datos de los contactos de la BD, y crear un nuevo array solo con los ids, es una promesa ya que quiero que primero obtenga los datos y luego cree el array, si no creará un array ids vacío hasta que se obtengan los datos

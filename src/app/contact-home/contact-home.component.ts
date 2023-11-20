@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactsService } from "../contacts.service";
 import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material";
+import { ContactDeleteComponent } from "../contact-delete/contact-delete.component";
 
 @Component({
   selector: "app-contact-home",
@@ -14,7 +16,8 @@ export class ContactHomeComponent implements OnInit {
   // al constructor le pasamos por parámetros el servicio donde está definido el método y el router, que es un elemento necesario para que funcione el link de cada elemento
   constructor(
     private contactsService: ContactsService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   // método inicial al entrar en esta URL, viene de contacts.service, el método es getContacts y recibe data, que son todos los datos de nuestra base de datos
@@ -33,6 +36,12 @@ export class ContactHomeComponent implements OnInit {
   // solo necesitamos el id, podríamos poner contact.id pero lo cogemos directamente en el html en lugar de aquí
   editContactDetail(contact: any) {
     this.router.navigate(["/contact/edit", contact]);
+  }
+
+  openDeleteDialog(contactId: number, contactName: string): void {
+    this.dialog.open(ContactDeleteComponent, {
+      data: { contactId: contactId, contactName },
+    });
   }
 
   // método para ordenar por nombre de forma ascendente, uso el Spread Operator [...array], ya que si modifico directamente el array contacts Angular no detecta el cambio y no renderiza de nuevo el componente

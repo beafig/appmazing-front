@@ -45,7 +45,7 @@ export class ProductEditComponent implements OnInit {
 
   async updateProduct() {
     this.verifyStock();
-    // this.verifyDate();
+    this.verifyDate();
     if (
       this.form.controls["name"].hasError("required") ||
       this.form.controls["stock"].hasError("required") ||
