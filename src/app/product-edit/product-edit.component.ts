@@ -35,9 +35,7 @@ export class ProductEditComponent implements OnInit {
           this.product.date_added,
           "yyyy-MM-dd"
         );
-        //funciona pero me sale este error
         this.product.date_added = formatDate;
-        console.log(typeof this.product.date_added);
       });
     this.categoriesService.getCategories().subscribe((data) => {
       this.categories = data;

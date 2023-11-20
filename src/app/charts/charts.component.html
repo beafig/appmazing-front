@@ -59,4 +59,36 @@
 </mat-card>
 <mat-card>
   <mat-card-title>Gráficas de productos</mat-card-title>
+  <mat-card-content>
+    <div class="chart-row">
+      <div>
+        <p><strong>Cantidad de productos por categoría</strong></p>
+        <ngx-charts-bar-horizontal
+          [view]="[400, 300]"
+          [results]="categoriesData"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          xAxisLabel="Número de productos"
+          yAxisLabel="Categoría"
+        ></ngx-charts-bar-horizontal>
+      </div>
+      <div>
+        <p><strong>Disponibilidad de productos</strong></p>
+        <ngx-charts-pie-chart
+          [view]="[400, 300]"
+          [results]="productsAvailability"
+          [labels]="true"
+          [doughnut]="true"
+        ></ngx-charts-pie-chart>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div>
+        <p><strong>Precios y stock</strong></p>
+      </div>
+    </div>
+  </mat-card-content>
 </mat-card>

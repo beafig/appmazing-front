@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ContactsService } from "../contacts.service";
+import { ProductsService } from "../products.service";
+import { Product } from "../model/Product";
 
 @Component({
   selector: "app-charts",
@@ -11,8 +13,14 @@ export class ChartsComponent implements OnInit {
   contactsByFullName: any[];
   emailExtensions: [];
   phonePrefixData: [];
+  categoriesData: [];
+  productsAvailability: [];
+  productsPriceAndStock: [];
 
-  constructor(private contactsService: ContactsService) {}
+  constructor(
+    private contactsService: ContactsService,
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit() {
     this.contactsService.getContacts().subscribe((data) => {
@@ -20,6 +28,11 @@ export class ChartsComponent implements OnInit {
       this.contactsByFullName = this.calculateContactsByFullNameData(data);
       this.emailExtensions = this.calculateEmailExtensionsData(data);
       this.phonePrefixData = this.generatePhonePrefixData(data);
+    });
+    this.productsService.getProducts().subscribe((data) => {
+      this.categoriesData = this.calculateCategoriesData(data);
+      this.productsAvailability = this.calculateProductAvailability(data);
+      this.productsPriceAndStock = this.calculateProductPriceAndStock(data);
     });
   }
 
@@ -113,5 +126,46 @@ export class ChartsComponent implements OnInit {
       }
     }
     return phonePrefixData;
+  }
+
+  // métodos para las gráficas de productos
+  calculateCategoriesData(products: Product[]): any {
+    return products.reduce((result, product) => {
+      const category = product.fk_category.name;
+      if (result.find((item) => item.name === category)) {
+        result.find((item) => item.name === category).value++;
+      } else {
+        result.push({ name: category, value: 1 });
+      }
+      return result;
+    }, []);
+  }
+
+  calculateProductAvailability(products: Product[]): any {
+    const availableProducts = products.filter(
+      (product) => product.active === true
+    );
+    const unavailableProducts = products.filter(
+      (product) => product.active === false
+    );
+    const availableProductsCount = availableProducts.length;
+    const unavailableProductsCount = unavailableProducts.length;
+    return [
+      { name: "Disponibles", value: availableProductsCount },
+      { name: "No Disponibles", value: unavailableProductsCount },
+    ];
+  }
+  calculateProductPriceAndStock(products: Product[]): any {
+    return products.map((product) => {
+      const newDate = new Date(product.date_added);
+      const year = newDate.getFullYear();
+      return {
+        name: product.name,
+        series: [
+          { name: "Stock", value: product.stock },
+          { name: "Año", value: year },
+        ],
+      };
+    });
   }
 }
