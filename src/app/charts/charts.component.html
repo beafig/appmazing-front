@@ -18,11 +18,9 @@
       </div>
       <div>
         <p><strong>Longitud del nombre</strong></p>
-        <!--  [results]="contactsByFullName[0].series" si no lo pongo así no funciona -->
-        <ngx-charts-bar-vertical
-          *ngIf="contactsByFullName && contactsByFullName[0]"
+        <ngx-charts-line-chart
           [view]="[400, 300]"
-          [results]="contactsByFullName[0].series"
+          [results]="contactsByFullName"
           [xAxis]="true"
           [yAxis]="true"
           [legend]="false"
@@ -30,7 +28,7 @@
           [showYAxisLabel]="true"
           xAxisLabel="Longitud del nombre"
           yAxisLabel="Número de contactos"
-        ></ngx-charts-bar-vertical>
+        ></ngx-charts-line-chart>
       </div>
     </div>
     <div class="chart-row">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "../products.service";
 import { Router } from "@angular/router";
-import { Product } from "model/Product";
+import { Product } from "../model/Product";
 import { MatDialog } from "@angular/material";
 import { ProductDeleteComponent } from "../product-delete/product-delete.component";
 

@@ -28,7 +28,7 @@ export class ContactNewComponent implements OnInit {
   ngOnInit() {}
 
   // handler del botón de submit, creamos el contacto recogiendo todos los valores del form, y llamamos al método para volver a la tabla. Es async ya que quiero esperar a que se cree el contacto antes de volver a la tabla.
-  async newContact() {
+  async newContact(): Promise<void> {
     const contact = {
       name: this.name,
       first_surname: this.first_surname,

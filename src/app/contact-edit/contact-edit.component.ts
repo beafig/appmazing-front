@@ -32,7 +32,7 @@ export class ContactEditComponent implements OnInit {
       });
   }
 
-  async updateContact() {
+  async updateContact(): Promise<void> {
     if (
       this.form.controls["name"].hasError("required") ||
       this.form.controls["first_surname"].hasError("required") ||

@@ -8,7 +8,7 @@ import { ContactsService } from "../contacts.service";
 })
 export class ChartsComponent implements OnInit {
   initialLetter: [];
-  contactsByFullName: [];
+  contactsByFullName: any[];
   emailExtensions: [];
   phonePrefixData: [];
 
@@ -35,7 +35,7 @@ export class ChartsComponent implements OnInit {
     }, []);
   }
 
-  calculateContactsByFullNameData(contacts: any[]): any {
+  calculateContactsByFullNameData(contacts: any[]): any[] {
     let tempContactsByFullName = [
       {
         name: "Contacts",

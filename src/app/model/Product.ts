@@ -5,6 +5,6 @@ export class Product {
   stock: number;
   price: number;
   active: boolean;
-  date_added: Date;
+  date_added: string;
   fk_category: Category;
 }

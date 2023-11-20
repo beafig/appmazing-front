@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Category } from "model/Category";
-import { Product } from "model/Product";
+import { Category } from "../model/Category";
+import { Product } from "../model/Product";
 import { ProductsService } from "../products.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CategoriesService } from "../categories.service";
@@ -37,13 +37,14 @@ export class ProductEditComponent implements OnInit {
         );
         //funciona pero me sale este error
         this.product.date_added = formatDate;
+        console.log(typeof this.product.date_added);
       });
     this.categoriesService.getCategories().subscribe((data) => {
       this.categories = data;
     });
   }
 
-  async updateProduct() {
+  async updateProduct(): Promise<void> {
     this.verifyStock();
     this.verifyDate();
     if (
@@ -76,9 +77,10 @@ export class ProductEditComponent implements OnInit {
 
   verifyDate() {
     if (this.product.date_added == null) {
-      this.product.date_added = new Date();
+      this.product.date_added = new Date().toISOString();
     }
   }
+
   cancelUpdate() {
     this.navigateToProductDetail();
   }

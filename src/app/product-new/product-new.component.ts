@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { ProductsService } from "../products.service";
 import { CategoriesService } from "../categories.service";
-import { Product } from "model/Product";
-import { Category } from "model/Category";
+import { Product } from "../model/Product";
+import { Category } from "../model/Category";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -44,11 +44,11 @@ export class ProductNewComponent implements OnInit {
 
   verifyDate() {
     if (this.product.date_added == null) {
-      this.product.date_added = new Date();
+      this.product.date_added = new Date().toISOString();
     }
   }
 
-  async newProduct() {
+  async newProduct(): Promise<void> {
     this.verifyStock();
     this.verifyDate();
     const product = {
